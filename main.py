@@ -26,7 +26,7 @@ if __name__ == '__main__':
                     Classes_available = True
                     classes_info.append(p[1:])
     except:
-        open('meetings.csv', 'x')
+        open('meetings.csv', 'x') # creates file if it doesnt exist
                 
     # If not founds fetches classes
     if not Classes_available:
