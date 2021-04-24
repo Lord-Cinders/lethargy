@@ -28,19 +28,24 @@ if __name__ == '__main__':
 
     # If not founds fetches classes
     if not Classes_available:
-        userid = '221910312019' #input("Enter your Pin No: ")
-        password = 'Vijay6969@' #input("Enter your password: ")
+        userid = '221910307033' #input("Enter your Pin No: ")
+        password = 'qwerty@12' #input("Enter your password: ")
 
         welcome_page = login.Login(userid, password)
-    
-        if(welcome_page):
-            links, date_times = scrape.ScrapeData(welcome_page)
-            meeting_data = scrape.Mergedata(links, date_times)
 
-            with open('meetings.csv', 'a', newline = '') as f:
-                writer = csv.writer(f)
-                writer.writerows(meeting_data) # Date - Time - Meeting id
-        print('----------Classes Successfully Saved----------', end='\n\n')
+        # only successful login
+        if welcome_page:
+            links, date_times = scrape.ScrapeData(welcome_page)
+            if links and date_times:
+                meeting_data = scrape.Mergedata(links, date_times)
+
+                # write to file
+                with open('meetings.csv', 'a', newline = '') as f:
+                    writer = csv.writer(f)
+                    writer.writerows(meeting_data) # Date - Time - Meeting id
+                    print('----------Classes Successfully Saved----------', end='\n\n')
+
+        # check for todays classes
         with open('meetings.csv', 'r') as f:
             for i in f:
                 p = i.split(',')
@@ -50,9 +55,10 @@ if __name__ == '__main__':
                
                 if p[0].strip(' ') == strdate:
                     classes_info.append(p)
+
     i = 0
     no_classes = len(classes_info)
-    zoom.Openzoom()
+    
     while True:
         localtime = time.localtime(time.time())
         hour = localtime[3]
@@ -62,6 +68,7 @@ if __name__ == '__main__':
 
         try: 
             if  hour == int(classes_info[i][0]):
+                zoom.Openzoom()
 
                 zoom.Openmeeting(classes_info[i][1])
 

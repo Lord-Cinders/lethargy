@@ -4,8 +4,14 @@ import re
 # returns a dict with date: {time: meeting ids} 
 def ScrapeData(webpage):
     # accessing welcome page
+
     soup = bs(webpage.content, 'html5lib')
-    table_zoom = soup.find('table', attrs={'id': 'ContentPlaceHolder1_GridViewonline'}) # table with zoom links
+    try:
+        table_zoom = soup.find('table', attrs={'id': 'ContentPlaceHolder1_GridViewonline'}) # table with zoom links
+    
+    except:
+        print("---------No Classes Found----------")
+        return
 
     zoom_links = table_zoom.find_all("a") # finding links
     link_info = table_zoom.find_all("h6") # finding meeting details
