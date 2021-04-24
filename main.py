@@ -19,8 +19,7 @@ if __name__ == '__main__':
         for i in f:
             p = i.split(',')
 
-            if p[0].strip(' ') > strdate:
-                break
+            if p[0].strip(' ') > strdate: break
             
             if p[0].strip(' ') == strdate:
                 Classes_available = True
@@ -41,8 +40,7 @@ if __name__ == '__main__':
                 meeting_data = scrape.Mergedata(links, date_times)
 
                 # remove previous data
-                if(os.path.exists('meetings.csv') and os.path.isfile('meetings.csv')):
-                    os.remove('meetings.csv')
+                if(os.path.exists('meetings.csv') and os.path.isfile('meetings.csv')): os.remove('meetings.csv')
 
                 # write to file
                 with open('meetings.csv', 'a', newline = '') as f:
@@ -55,40 +53,46 @@ if __name__ == '__main__':
             for i in f:
                 p = i.split(',')
 
-                if p[0].strip(' ') > strdate:
-                    break
+                if p[0].strip(' ') > strdate: break
                
                 if p[0].strip(' ') == strdate:
                     classes_info.append(p)
+                    Classes_available = True
 
     i = 0
     no_classes = len(classes_info)
     
+    # main loop
     while True:
+
+        if Classes_available: break
+
         localtime = time.localtime(time.time())
         hour = localtime[3]
         
-        if hour > 17 or i == no_classes:
-            break
+        if hour > 17 or i == no_classes: break
 
         try: 
             if  hour == int(classes_info[i][0]):
                 zoom.Openzoom()
-
+                
                 zoom.Openmeeting(classes_info[i][1])
 
                 time.sleep(45 * 60)
             
                 zoom.Closemeeting()
+                
                 i += 1
-                print("finished class", i)
+                print("Finished class", i)
+
             else:
                 wait_hour = abs(int(classes_info[i][0]) - hour)
                 wait_minutes = 60 - localtime[4] 
                 total_wait = wait_hour * 3600 + wait_minutes * 60 
+                
                 time.wait(total_wait)
-        except:
-            print("---------an unknown error has occured----------")
+        
+        except: print("---------An unknown error has occured----------")
 
     print("----------Done for the day!----------")
 

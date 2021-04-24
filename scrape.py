@@ -6,9 +6,8 @@ def ScrapeData(webpage):
     # accessing welcome page
 
     soup = bs(webpage.content, 'html5lib')
-    try:
-        table_zoom = soup.find('table', attrs={'id': 'ContentPlaceHolder1_GridViewonline'}) # table with zoom links
-    
+    try: table_zoom = soup.find('table', attrs={'id': 'ContentPlaceHolder1_GridViewonline'}) # table with zoom links
+
     except:
         print("---------No Classes Found----------")
         return
@@ -41,15 +40,12 @@ def Mergedata(links, dates_times):
         date = p[1]
         
         # converting to 24 hour format
-        if  int(p[4]) < 9:
-            time = int(p[4]) + 12 
-        else:
-            time = int(p[4]) 
+        if  int(p[4]) < 9: time = int(p[4]) + 12 
+        else: time = int(p[4]) 
 
-        try:
-            meeting_info.append((date, time, links[i]))
-        except:
-            meeting_info.append((date, time, links[i]))
+        try: meeting_info.append((date, time, links[i]))
+        
+        except: meeting_info.append((date, time, links[i]))
     
     meeting_info.sort()
 

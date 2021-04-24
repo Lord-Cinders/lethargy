@@ -37,5 +37,6 @@ def Login(userid, password):
         print('----------Login Successful----------', end='\n\n') 
         url = 'http://login.gitam.edu/' + redirect[2]
         req = s.get(url, headers = headers)
+
         return req
         

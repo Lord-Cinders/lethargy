@@ -16,6 +16,7 @@ def Closemeeting():
         subprocess.call(["taskkill","/IM","Zoom.exe"])
         time.sleep(2)
         keyboard.press_and_release('ctrl+w')
+
     finally:
         pass
 
