@@ -6,14 +6,15 @@ def ScrapeData(webpage):
     # accessing welcome page
 
     soup = bs(webpage.content, 'html5lib')
-    try: table_zoom = soup.find('table', attrs={'id': 'ContentPlaceHolder1_GridViewonline'}) # table with zoom links
+    table_zoom = soup.find('table', attrs={'id': 'ContentPlaceHolder1_GridViewonline'}) # table with zoom links
+
+    try:
+        zoom_links = table_zoom.find_all("a") # finding links
+        link_info = table_zoom.find_all("h6") # finding meeting details
 
     except:
         print("---------No Classes Found----------")
         return
-
-    zoom_links = table_zoom.find_all("a") # finding links
-    link_info = table_zoom.find_all("h6") # finding meeting details
     
     dates_times = [str(i).strip(" ") for i in link_info]   
     links = [str(i.get('href')) for i in zoom_links]
