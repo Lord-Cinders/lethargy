@@ -40,4 +40,3 @@ def Login(userid, password):
         req = s.get(url, headers = headers)
 
         return req
-        
