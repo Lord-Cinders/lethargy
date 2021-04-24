@@ -65,7 +65,7 @@ if __name__ == '__main__':
     # main loop
     while True:
 
-        if Classes_available: break
+        if not Classes_available: break
 
         localtime = time.localtime(time.time())
         hour = localtime[3]
