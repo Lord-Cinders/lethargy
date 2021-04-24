@@ -51,5 +51,3 @@ def Mergedata(links, dates_times):
     meeting_info.sort()
 
     return meeting_info
-    
-

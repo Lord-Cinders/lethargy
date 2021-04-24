@@ -19,6 +19,3 @@ def Closemeeting():
 
     finally:
         pass
-
-
-
