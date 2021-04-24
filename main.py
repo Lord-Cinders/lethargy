@@ -4,6 +4,7 @@ import csv
 import time
 import datetime as dt
 import zoom
+import os
 
 if __name__ == '__main__':
 
@@ -38,6 +39,10 @@ if __name__ == '__main__':
             links, date_times = scrape.ScrapeData(welcome_page)
             if links and date_times:
                 meeting_data = scrape.Mergedata(links, date_times)
+
+                # remove previous data
+                if(os.path.exists('meetings.csv') and os.path.isfile('meetings.csv')):
+                    os.remove('meetings.csv')
 
                 # write to file
                 with open('meetings.csv', 'a', newline = '') as f:
