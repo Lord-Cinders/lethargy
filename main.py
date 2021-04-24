@@ -15,17 +15,19 @@ if __name__ == '__main__':
     classes_info = []
 
     # checks for classes
-    with open('meetings.csv', 'r') as f:
-        for i in f:
-            p = i.split(',')
+    try:
+        with open('meetings.csv', 'r') as f:
+            for i in f:
+                p = i.split(',')
 
-            if p[0].strip(' ') > strdate: break
+                if p[0].strip(' ') > strdate: break
             
-            if p[0].strip(' ') == strdate:
-                Classes_available = True
-                classes_info.append(p[1:])
+                if p[0].strip(' ') == strdate:
+                    Classes_available = True
+                    classes_info.append(p[1:])
+    except:
+        open('meetings.csv', 'x')
                 
-
     # If not founds fetches classes
     if not Classes_available:
         userid = '221910307033' #input("Enter your Pin No: ")
@@ -39,11 +41,8 @@ if __name__ == '__main__':
             if links and date_times:
                 meeting_data = scrape.Mergedata(links, date_times)
 
-                # remove previous data
-                if(os.path.exists('meetings.csv') and os.path.isfile('meetings.csv')): os.remove('meetings.csv')
-
                 # write to file
-                with open('meetings.csv', 'a', newline = '') as f:
+                with open('meetings.csv', 'w', newline = '') as f:
                     writer = csv.writer(f)
                     writer.writerows(meeting_data) # Date - Time - Meeting id
                     print('----------Classes Successfully Saved----------', end='\n\n')
