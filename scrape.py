@@ -14,7 +14,7 @@ def ScrapeData(webpage):
 
     except:
         print("---------No Classes Found----------")
-        return
+        return 0, 0
     
     dates_times = [str(i).strip(" ") for i in link_info]   
     links = [str(i.get('href')) for i in zoom_links]
