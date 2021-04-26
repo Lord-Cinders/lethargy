@@ -71,6 +71,10 @@ if __name__ == '__main__':
         
         if hour > 17 or i == no_classes: break
 
+        if hour > int(classes_info[i][0]):
+            i += 1
+            continue
+
         try: 
             if  hour == int(classes_info[i][0]):
                 zoom.Openzoom()
