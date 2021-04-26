@@ -4,7 +4,6 @@ import csv
 import time
 import datetime as dt
 import zoom
-import os
 
 if __name__ == '__main__':
 
@@ -30,8 +29,8 @@ if __name__ == '__main__':
                 
     # If not founds fetches classes
     if not Classes_available:
-        userid = input("Enter your Pin No: ")
-        password = input("Enter your password: ")
+        userid = '221910312019' #input("Enter your Pin No: ")
+        password = 'Vijay6969@' #input("Enter your password: ")
 
         welcome_page = login.Login(userid, password)
 
@@ -95,7 +94,7 @@ if __name__ == '__main__':
                 print("No class until", total_wait/60, "minutes")
                 time.sleep(total_wait)
                 
-        
+
         except: print("---------An unknown error has occured----------")
 
     print("----------Done for the day!----------")

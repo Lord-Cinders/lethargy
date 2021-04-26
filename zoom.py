@@ -1,7 +1,6 @@
 import time
 import subprocess 
 import webbrowser
-import keyboard
 
 def Openzoom():
     subprocess.Popen(r"C:\Users\vijay\AppData\Roaming\Zoom\bin\Zoom.exe")
