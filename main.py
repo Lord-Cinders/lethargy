@@ -78,7 +78,6 @@ if __name__ == '__main__':
         try: 
             if  hour == int(classes_info[i][0]):
                 zoom.Openzoom()
-                
                 zoom.Openmeeting(classes_info[i][1])
 
                 time.sleep(48 * 60)
@@ -89,11 +88,11 @@ if __name__ == '__main__':
                 print("Finished class", i)
 
             else:
-                
-                wait_hour = abs(int(classes_info[i][0]) - hour - 1)
-                
+                wait_hour = abs(int(classes_info[i][0]) - hour - 1) 
                 wait_minutes = 60 - localtime[4] 
                 total_wait = wait_hour * 3600 + wait_minutes * 60 
+                
+                print("No class until", total_wait/60, "minutes")
                 time.sleep(total_wait)
                 
         

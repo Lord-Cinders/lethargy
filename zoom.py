@@ -13,7 +13,7 @@ def Openmeeting(meeting_url):
 
 def Closemeeting():
     try:
-        subprocess.call(["taskkill","/IM","Zoom.exe"])
+        subprocess.call(["taskkill","/F","/IM","Zoom.exe"])
         time.sleep(2)
         keyboard.press_and_release('ctrl+w')
 
