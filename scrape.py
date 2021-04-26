@@ -44,9 +44,7 @@ def Mergedata(links, dates_times):
         if  int(p[4]) < 9: time = int(p[4]) + 12 
         else: time = int(p[4]) 
 
-        try: meeting_info.append((date, time, links[i]))
-        
-        except: meeting_info.append((date, time, links[i]))
+        meeting_info.append((date, time, links[i]))
     
     meeting_info.sort()
 
