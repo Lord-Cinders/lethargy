@@ -55,7 +55,7 @@ if __name__ == '__main__':
                 if p[0].strip(' ') > strdate: break
                
                 if p[0].strip(' ') == strdate:
-                    classes_info.append(p)
+                    classes_info.append(p[1:])
                     Classes_available = True
 
     i = 0
@@ -77,7 +77,7 @@ if __name__ == '__main__':
                 
                 zoom.Openmeeting(classes_info[i][1])
 
-                time.sleep(45 * 60)
+                time.sleep(48 * 60)
             
                 zoom.Closemeeting()
                 
@@ -85,11 +85,15 @@ if __name__ == '__main__':
                 print("Finished class", i)
 
             else:
-                wait_hour = abs(int(classes_info[i][0]) - hour)
+                wait_hour = 0
+
+                if hour is not int(classes_info[i][0]) - 1:
+                    wait_hour = abs(int(classes_info[i][0]) - hour)
+                
                 wait_minutes = 60 - localtime[4] 
                 total_wait = wait_hour * 3600 + wait_minutes * 60 
-                
                 time.sleep(total_wait)
+                
         
         except: print("---------An unknown error has occured----------")
 
