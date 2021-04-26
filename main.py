@@ -85,10 +85,8 @@ if __name__ == '__main__':
                 print("Finished class", i)
 
             else:
-                wait_hour = 0
-
-                if hour is not int(classes_info[i][0]) - 1:
-                    wait_hour = abs(int(classes_info[i][0]) - hour)
+                
+                wait_hour = abs(int(classes_info[i][0]) - hour - 1)
                 
                 wait_minutes = 60 - localtime[4] 
                 total_wait = wait_hour * 3600 + wait_minutes * 60 
