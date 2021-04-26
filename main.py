@@ -30,8 +30,8 @@ if __name__ == '__main__':
                 
     # If not founds fetches classes
     if not Classes_available:
-        userid = '221910312019' #input("Enter your Pin No: ")
-        password = 'Vijay6969@' #input("Enter your password: ")
+        userid = input("Enter your Pin No: ")
+        password = input("Enter your password: ")
 
         welcome_page = login.Login(userid, password)
 
