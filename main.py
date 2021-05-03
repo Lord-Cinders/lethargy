@@ -4,11 +4,11 @@ import csv
 import time
 import datetime as dt
 import zoom
+import wikipedia
 
 if __name__ == '__main__':
 
-    date = dt.date.today()
-    strdate = str(date.day) + '-' + date.strftime('%b') + '-' + str(date.year)
+    date = int(dt.date.today().day)
     
     Classes_available = False
     classes_info = []
@@ -19,9 +19,9 @@ if __name__ == '__main__':
             for i in f:
                 p = i.split(',')
 
-                if p[0].strip(' ') > strdate: break
+                if int(p[0]) > date: break
             
-                if p[0].strip(' ') == strdate:
+                if int(p[0]) == date:
                     Classes_available = True
                     classes_info.append(p[1:])
     except:
@@ -29,8 +29,8 @@ if __name__ == '__main__':
                 
     # If not founds fetches classes
     if not Classes_available:
-        userid = '221910312019' #input("Enter your Pin No: ")
-        password = 'Vijay6969@' #input("Enter your password: ")
+        userid = input("Enter your Pin No: ")
+        password = input("Enter your password: ")
 
         welcome_page = login.Login(userid, password)
 
@@ -51,11 +51,11 @@ if __name__ == '__main__':
             for i in f:
                 p = i.split(',')
 
-                if p[0].strip(' ') > strdate: break
-               
-                if p[0].strip(' ') == strdate:
-                    classes_info.append(p[1:])
+                if int(p[0]) > date: break
+            
+                if int(p[0]) == date:
                     Classes_available = True
+                    classes_info.append(p[1:])
 
     i = 0
     no_classes = len(classes_info)
@@ -75,11 +75,11 @@ if __name__ == '__main__':
             continue
 
         try: 
-            if  hour == int(classes_info[i][0]):
+            if  hour == int(classes_info[i][0]) and localtime[4] < 50:
                 zoom.Openzoom()
                 zoom.Openmeeting(classes_info[i][1])
-
-                time.sleep(48 * 60)
+                wait_minutes = (50 -localtime[4])*60
+                time.sleep(wait_minutes)
             
                 zoom.Closemeeting()
                 

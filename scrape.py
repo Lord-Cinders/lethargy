@@ -16,7 +16,7 @@ def ScrapeData(webpage):
         print("---------No Classes Found----------")
         return 0, 0
     
-    dates_times = [str(i).strip(" ") for i in link_info]   
+    dates_times = [str(i) for i in link_info]   
     links = [str(i.get('href')) for i in zoom_links]
 
     # getting meeting ids
@@ -38,7 +38,7 @@ def Mergedata(links, dates_times):
 
         p = dates_times[i].split(':')
         
-        date = p[1]
+        date = p[1].split('-')[0]
         
         # converting to 24 hour format
         if  int(p[4]) < 9: time = int(p[4]) + 12 
