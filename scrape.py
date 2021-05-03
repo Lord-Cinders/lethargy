@@ -37,7 +37,6 @@ def Mergedata(links, dates_times):
         dates_times[i] = dates_times[i][start + 1:end]
 
         p = dates_times[i].split(':')
-        
         date = p[1].split('-')[0]
         
         # converting to 24 hour format

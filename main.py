@@ -4,7 +4,6 @@ import csv
 import time
 import datetime as dt
 import zoom
-import wikipedia
 
 if __name__ == '__main__':
 
