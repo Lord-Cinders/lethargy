@@ -6,6 +6,7 @@ def ScrapeData(webpage):
     # accessing welcome page
 
     soup = bs(webpage.content, 'html5lib')
+    print(soup)
     table_zoom = soup.find('table', attrs={'id': 'ContentPlaceHolder1_GridViewonline'}) # table with zoom links
 
     try:
@@ -15,7 +16,7 @@ def ScrapeData(webpage):
     except:
         print("---------No Classes Found----------")
         return 0, 0
-    
+
     dates_times = [str(i) for i in link_info]   
     links = [str(i.get('href')) for i in zoom_links]
 
@@ -23,7 +24,8 @@ def ScrapeData(webpage):
     # for i in range(len(links)):
     #     m = re.search('/j/(.+?)?pwd=', links[i])
     #     links[i] = m.group(1).rstrip('?')
-    
+    print(links)
+
     return links, dates_times
 
 # seperating text from tags and seperating date and time
@@ -38,13 +40,13 @@ def Mergedata(links, dates_times):
 
         p = dates_times[i].split(':')
         date = p[1].split('-')[0]
-        
+
         # converting to 24 hour format
         if  int(p[4]) < 9: time = int(p[4]) + 12 
         else: time = int(p[4]) 
 
         meeting_info.append((date, time, links[i]))
-    
+
     meeting_info.sort()
 
     return meeting_info

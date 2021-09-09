@@ -8,7 +8,7 @@ import zoom
 if __name__ == '__main__':
 
     date = int(dt.date.today().day)
-    
+
     Classes_available = False
     classes_info = []
 
@@ -25,11 +25,11 @@ if __name__ == '__main__':
                     classes_info.append(p[1:])
     except:
         open('meetings.csv', 'x') # creates file if it doesnt exist
-                
+
     # If not founds fetches classes
     if not Classes_available:
-        userid = input("Enter your Pin No: ")
-        password = input("Enter your password: ")
+        userid =  input("Enter your Pin No: ")
+        password =  input("Enter your password: ")
 
         welcome_page = login.Login(userid, password)
 
@@ -79,9 +79,7 @@ if __name__ == '__main__':
                 zoom.Openmeeting(classes_info[i][1])
                 wait_minutes = (50 -localtime[4])*60
                 time.sleep(wait_minutes)
-            
                 zoom.Closemeeting()
-                
                 i += 1
                 print("Finished class", i)
 
@@ -89,7 +87,6 @@ if __name__ == '__main__':
                 wait_hour = abs(int(classes_info[i][0]) - hour - 1) 
                 wait_minutes = 60 - localtime[4] 
                 total_wait = wait_hour * 3600 + wait_minutes * 60 
-                
                 print("No class until", total_wait/60, "minutes")
                 time.sleep(total_wait)
                 
