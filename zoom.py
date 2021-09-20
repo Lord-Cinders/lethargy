@@ -3,7 +3,7 @@ import subprocess
 import webbrowser
 
 def Openzoom():
-    subprocess.Popen(r"C:\Program Files (x86)\Zoom\bin\Zoom.exe") # path might be different for different users
+    subprocess.Popen(r"zoom path") # path might be different for different users
     time.sleep(5)
 
 def Openmeeting(meeting_url):

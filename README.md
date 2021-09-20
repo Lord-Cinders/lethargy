@@ -12,6 +12,7 @@ Cause clicking on links is too clichéd.
 - requests
 - bs4
 - html5lib
+- Add zoom path in zoom.py
 
 ### What's coming next
 - User interface
