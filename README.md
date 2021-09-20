@@ -8,6 +8,11 @@ Cause clicking on links is too clichéd.
 ### What it can't do
 - Save you when your name is called
 
+### Requirements
+- requests
+- bs4
+- html5lib
+
 ### What's coming next
 - User interface
 - Any optimization
