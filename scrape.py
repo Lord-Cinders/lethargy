@@ -6,7 +6,6 @@ def ScrapeData(webpage):
     # accessing welcome page
 
     soup = bs(webpage.content, 'html5lib')
-    print(soup)
     table_zoom = soup.find('table', attrs={'id': 'ContentPlaceHolder1_GridViewonline'}) # table with zoom links
 
     try:
@@ -24,8 +23,6 @@ def ScrapeData(webpage):
     # for i in range(len(links)):
     #     m = re.search('/j/(.+?)?pwd=', links[i])
     #     links[i] = m.group(1).rstrip('?')
-    print(links)
-
     return links, dates_times
 
 # seperating text from tags and seperating date and time

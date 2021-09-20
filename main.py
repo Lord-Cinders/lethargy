@@ -28,8 +28,8 @@ if __name__ == '__main__':
 
     # If not founds fetches classes
     if not Classes_available:
-        userid =  input("Enter your Pin No: ")
-        password =  input("Enter your password: ")
+        userid =  input("Enter ID: ")
+        password = input("Password: ")
 
         welcome_page = login.Login(userid, password)
 
@@ -91,6 +91,6 @@ if __name__ == '__main__':
                 time.sleep(total_wait)
                 
 
-        except: print("---------An unknown error has occured----------")
+        except: print("Unable to open zoom")
 
     print("----------Done for the day!----------")

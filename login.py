@@ -30,7 +30,6 @@ def Login(userid, password):
 
         # To enter Glearn
         redirect = [a['href'] for a in soup.find_all('a', href=True)]
-        print(redirect)
 
         if(redirect[0] != 'http://gitam.edu/'): # Unsuccessful Login
             print('----------Login Failed----------', end='\n\n')
@@ -42,18 +41,17 @@ def Login(userid, password):
         
         glearnheaders = {
             'Host': 'glearn.gitam.edu',
-            'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:91.0) Gecko/20100101 Firefox/91.0',
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:92.0) Gecko/20100101 Firefox/92.0',
             'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
             'Accept-Language': 'en-US,en;q=0.5',
             'Accept-Encoding': 'gzip, deflate',
             'DNT': '1',
             'Connection': 'keep-alive',
-            'Cookie': 'ASP.NET_SessionId=a345flviyfxreke3xkquc1eg',
+            'Cookie': 'ASP.NET_SessionId=cq3usob2jqx5lue3kd44sbly',
             'Upgrade-Insecure-Requests': '1',
             'Cache-Control': 'max-age=0',
         }
 
         req = s.get(url, headers = glearnheaders)
-        print(req)
 
         return req
